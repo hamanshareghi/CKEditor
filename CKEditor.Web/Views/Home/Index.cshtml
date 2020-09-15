@@ -1,28 +1,20 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Ckeditor With Uploads";
 }
 
-<div class="text-center">
-    <form asp-controller="Home" asp-action="Upload" method="post">
-        <h1 class="display-4">Create CKEditor With FileUpload</h1>
-        <textarea id="Text" name="FullText" class="form-control"> </textarea>
-        <hr />
-        <input type="submit" class="btn btn-block btn-success " name="name" value="Send And Save" />
-    </form>
-
-</div>
-
+<form method="post">
+    <textarea class="form-control" id="editor" name="Upload"></textarea>
+</form>
 
 @section Scripts
 {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/lib/ckeditor/ckeditor.js"></script>
-    <script src="~/lib/ckeditor/adapters/jquery.js"></script>
     <script>
-        $(function () {
-            $('#Text').ckeditor();
-
+       
+        CKEDITOR.replace('editor', {
+            customConfig:'/lib/ckeditor/Config.js'
         });
+            
     </script>
-}
 
+}
